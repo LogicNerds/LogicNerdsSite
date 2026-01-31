@@ -7,20 +7,19 @@
   <meta name="description" content="Logic Nerds builds revenue-focused tools for solopreneurs and small service businesses." />
 
   <style>
-    :root {
-  --bg: #ffffff;
-  --panel: #ffffff;
-  --text: #0f172a;
-  --muted: #475569;
-  --border: #e5e7eb;
-  --accent: #1f8cff;
-  --soft: #f8fafc;
-      --radius: 14px;
-      --max: 1100px;
+    :root{
+      --blue: #0b8ff3;
+      --bg: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e5e7eb;
+      --soft: #f8fafc;
+      --radius: 16px;
+      --max: 1120px;
     }
 
     * { box-sizing: border-box; }
-    body {
+    body{
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
@@ -28,79 +27,97 @@
       line-height: 1.55;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
 
-    .wrap {
+    .wrap{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 32px 24px;
+      padding: 22px 24px;
     }
 
-    /* Header */
-    header {
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-}
-header::after {
-  content: "";
-  display: block;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    #1f8cff,
-    #4da3ff
-  );
-}
+    /* Global header colors */
+    h1,h2,h3,h4,h5,h6{ color: var(--blue); margin: 0; }
 
-    .nav {
+    /* Header */
+    header{
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav{
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 18px;
     }
 
-    .logo {
-      height: 40px;
+    .logo{
+      height: 52px; /* ~1.3x prior */
       width: auto;
+      display: block;
+    }
+
+    .navlinks{
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .navlinks a{
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    .navlinks a:focus{
+      outline: 2px solid rgba(11,143,243,.25);
+      outline-offset: 2px;
     }
 
     /* Hero */
-    .hero {
+    main .wrap{ padding-top: 18px; } /* reduce gap under header */
+
+    .hero{
       display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 48px;
-      padding: 72px 0 56px;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 34px;
       align-items: center;
+      padding: 26px 0 26px; /* tighter than before */
     }
 
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
     }
 
-    h1 {
-      font-size: 48px;
-      line-height: 1.1;
-      margin: 0 0 16px;
+    .hero h1{
+      font-size: 46px;
+      line-height: 1.08;
       letter-spacing: -0.02em;
+      margin-bottom: 12px;
     }
 
-    .hero p {
+    .hero p{
+      margin: 0;
       font-size: 18px;
       color: var(--muted);
-      max-width: 60ch;
+      max-width: 62ch;
     }
 
-    .photo-placeholder {
+    .photo-placeholder{
       height: 280px;
       border-radius: var(--radius);
-      border: 1px dashed #334155;
+      border: 1px dashed #cbd5e1;
       background:
         repeating-linear-gradient(
           45deg,
-          #0f172a,
-          #0f172a 10px,
-          #020617 10px,
-          #020617 20px
+          #f8fafc,
+          #f8fafc 10px,
+          #ffffff 10px,
+          #ffffff 20px
         );
       display: flex;
       align-items: center;
@@ -108,210 +125,327 @@ header::after {
       color: #64748b;
       font-size: 14px;
       text-align: center;
-      padding: 24px;
+      padding: 22px;
     }
 
-    /* Products */
-    section {
-      padding: 64px 0;
+    /* Sections */
+    section{
+      padding: 34px 0;
     }
 
-    .section-title {
+    .section-title{
       font-size: 28px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       letter-spacing: -0.01em;
     }
 
-    .section-sub {
+    .section-sub{
+      margin: 0 0 22px;
       color: var(--muted);
-      max-width: 70ch;
-      margin-bottom: 40px;
+      max-width: 78ch;
+      font-size: 16px;
     }
 
-    .product {
+    /* Product */
+    .product{
       display: grid;
       grid-template-columns: .9fr 1.1fr;
-      gap: 40px;
+      gap: 28px;
       align-items: center;
     }
 
-    @media (max-width: 900px) {
-      .product { grid-template-columns: 1fr; }
+    @media (max-width: 900px){
+      .product{ grid-template-columns: 1fr; }
     }
 
-    .product-card {
-      background: var(--panel);
+    .card{
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 32px;
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, .06);
     }
 
-    .product-logo {
-      width: 120px;
+    .product-card{
+      padding: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      background: var(--soft);
+    }
+
+    .qq-logo{
+      max-width: 220px;
+      width: 70%;
       height: auto;
-      margin-bottom: 20px;
+      object-fit: contain;
+      display: block;
     }
 
-    .product h3 {
+    .product h3{
       font-size: 22px;
       margin: 0 0 10px;
     }
 
-    .product p {
+    .product p{
+      margin: 0 0 14px;
       color: var(--muted);
-      margin-bottom: 18px;
+      font-size: 16px;
     }
 
-    .product ul {
+    .product ul{
+      margin: 0 0 18px;
       padding-left: 18px;
-      margin: 0 0 24px;
       color: var(--muted);
+      font-size: 14px;
     }
 
-    .btn {
+    .btn{
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 18px;
+      padding: 11px 16px;
       border-radius: 999px;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: #fff;
-      font-weight: 600;
+      border: 1px solid var(--blue);
+      background: var(--blue);
+      color: #ffffff;
+      font-weight: 700;
       font-size: 14px;
       cursor: pointer;
+      text-decoration: none;
     }
+    .btn:hover{ filter: brightness(1.03); text-decoration: none; }
 
     /* Footer */
-    footer {
+    footer{
       border-top: 1px solid var(--border);
-      padding: 32px 0;
+      padding: 22px 0;
       font-size: 13px;
       color: var(--muted);
+      background: #ffffff;
     }
 
-    .footer-row {
+    .footer-row{
       display: flex;
       justify-content: space-between;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
-    .legal-toggle {
-      cursor: pointer;
-      color: var(--accent);
-      font-weight: 600;
+    /* Legal drawer */
+    .drawer{
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, .35);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 18px;
+      z-index: 50;
     }
+    .drawer.open{ display: flex; }
 
-    .legal {
-      max-height: 0;
+    .drawer-panel{
+      width: min(920px, 100%);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 30px 80px rgba(15,23,42,.25);
       overflow: hidden;
-      transition: max-height .3s ease;
-      margin-top: 16px;
-      border-top: 1px solid var(--border);
-      padding-top: 0;
     }
 
-    .legal.open {
-      max-height: 500px;
-      padding-top: 16px;
+    .drawer-head{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--soft);
     }
 
-    .legal p {
-      font-size: 12px;
+    .drawer-head h4{
+      margin: 0;
+      font-size: 16px;
+      color: var(--blue);
+    }
+
+    .drawer-close{
+      border: 1px solid var(--border);
+      background: #ffffff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .drawer-body{
+      padding: 16px;
       color: var(--muted);
-      max-width: 80ch;
+      font-size: 13px;
+      line-height: 1.55;
     }
+
+    .drawer-body strong{ color: var(--text); }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="wrap nav">
+      <a href="/" aria-label="Logic Nerds Home">
+        <img class="logo" src="LogicNerdSiteAssets/logic-nerds-site-logo.png" alt="Logic Nerds logo" />
+      </a>
 
-<header>
-  <div class="wrap nav">
-    <img src="LogicNerdSiteAssets/logic-nerds-site-logo.png" alt="Logic Nerds" class="logo" />
-  </div>
-</header>
-
-<main class="wrap">
-  <!-- Hero -->
-  <section class="hero">
-    <div>
-      <h1>Built for solopreneurs and small service businesses.</h1>
-      <p>
-        Logic Nerds builds focused, web-based tools designed to increase revenue
-        and make managing operations easier — without enterprise software or
-        unnecessary complexity.
-      </p>
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+        <a href="#" id="legalLinkTop">Legal</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="photo-placeholder">
-      Placeholder for product or in-use photo
-    </div>
-  </section>
-
-  <!-- Products -->
-  <section id="products">
-    <h2 class="section-title">Products</h2>
-    <p class="section-sub">
-      We design focused tools that solve common, revenue-impacting problems for
-      solopreneurs and small service businesses. Check out what we're working on:
-    </p>
-
-    <div class="product">
-      <div class="product-card">
-        <img
-          src="LogicNerdSiteAssets/Quick_Quote_Logo.png"
-          alt="My QuickQuote"
-          class="product-logo"
-        />
-      </div>
-
-      <div class="product">
+  <main>
+    <div class="wrap">
+      <section class="hero">
         <div>
-          <h3>My QuickQuote</h3>
+          <h1>Built for solopreneurs and small service businesses.</h1>
           <p>
-            A fast, customer-friendly quoting tool built for solo operators who
-            need to respond quickly, look professional, and close more work.
+            We are Logic Nerds. We build focused tools designed to increase revenue and make
+            managing operations easier — without enterprise software or unnecessary complexity.
           </p>
-          <ul>
-            <li>Create consistent quotes in minutes</li>
-            <li>Send quotes instantly to customers</li>
-            <li>Reduce friction and lost opportunities</li>
-          </ul>
-          <a class="btn" href="#">Learn more</a>
+        </div>
+
+        <div class="photo-placeholder">
+          Photo placeholder (add a product screenshot or “in-use” photo later)
+        </div>
+      </section>
+
+      <section id="products">
+        <h2 class="section-title">Products</h2>
+        <p class="section-sub">
+          We design focused tools that solve common, revenue-impacting problems for solopreneurs and small service businesses.
+          Check out what we're working on:
+        </p>
+
+        <div class="product">
+          <div class="card product-card">
+            <img class="qq-logo" src="LogicNerdSiteAssets/Quick_Quote_Logo.png" alt="My QuickQuote logo" />
+          </div>
+
+          <div>
+            <h3>My QuickQuote</h3>
+            <p>
+              A fast, customer-friendly quoting tool built for solo operators who need to respond quickly,
+              look professional, and close more work.
+            </p>
+            <ul>
+              <li>Create consistent quotes in minutes</li>
+              <li>Send quotes instantly to customers</li>
+              <li>Reduce friction and lost opportunities</li>
+            </ul>
+            <a class="btn" href="#">Learn more</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-sub">
+          Questions, partnerships, or product feedback — email us and we’ll respond.
+        </p>
+        <a class="btn" href="mailto:elijah@logicnerds.net">Email Elijah</a>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-row">
+        <div>
+          © <span id="year"></span> Logic Nerds ·
+          <a href="mailto:elijah@logicnerds.net">elijah@logicnerds.net</a>
+        </div>
+        <div>
+          <a href="#" id="legalLinkBottom" style="color:#0b8ff3; font-weight:700;">Legal stuff</a>
         </div>
       </div>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer>
-  <div class="wrap">
-    <div class="footer-row">
-      <div>
-        © <span id="year"></span> Logic Nerds ·
-        <a href="mailto:elijah@logicnerds.net">elijah@logicnerds.net</a>
+  <!-- Legal Drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <h4 id="drawerTitle">Legal Stuff</h4>
+        <button class="drawer-close" id="drawerClose" aria-label="Close legal drawer">Close</button>
       </div>
-      <div class="legal-toggle" onclick="toggleLegal()">Legal stuff</div>
-    </div>
-
-    <div id="legal" class="legal">
-      <p>
-        Legal placeholder. Add Terms of Service, Privacy Policy, disclaimers,
-        and any required notices here. This drawer keeps the main page clean
-        while remaining compliant.
-      </p>
+      <div class="drawer-body">
+        <p><strong>Legal Notice</strong></p>
+        <p>
+          Logic Nerds provides web-based software tools intended to help solopreneurs and small service businesses
+          improve operational efficiency and revenue workflows. All products and services are provided “as is”
+          and “as available,” without warranties of any kind, whether express, implied, or statutory, including
+          (without limitation) implied warranties of merchantability, fitness for a particular purpose, and
+          non-infringement.
+        </p>
+        <p>
+          <strong>No guarantees.</strong> We do not guarantee specific outcomes, revenue increases, performance results,
+          or uninterrupted availability. Your results depend on many factors outside our control.
+        </p>
+        <p>
+          <strong>No professional advice.</strong> Logic Nerds does not provide legal, financial, tax, or accounting advice.
+          You are responsible for ensuring your use of our tools complies with applicable laws, regulations, and industry
+          requirements.
+        </p>
+        <p>
+          <strong>Limitation of liability.</strong> To the maximum extent permitted by law, Logic Nerds will not be liable for
+          any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, revenue, data,
+          or goodwill arising from or related to your use of (or inability to use) our products.
+        </p>
+        <p>
+          <strong>Privacy.</strong> We do not sell personal data. Any information collected is used to operate, maintain,
+          and improve our products. For detailed terms and privacy policies, we will publish dedicated pages as the
+          products mature.
+        </p>
+      </div>
     </div>
   </div>
-</footer>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  function toggleLegal() {
-    document.getElementById("legal").classList.toggle("open");
-  }
-</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
+    const drawer = document.getElementById("drawer");
+    const closeBtn = document.getElementById("drawerClose");
+    const openTop = document.getElementById("legalLinkTop");
+    const openBottom = document.getElementById("legalLinkBottom");
+
+    function openDrawer(e){
+      if (e) e.preventDefault();
+      drawer.classList.add("open");
+      drawer.setAttribute("aria-hidden", "false");
+    }
+
+    function closeDrawer(e){
+      if (e) e.preventDefault();
+      drawer.classList.remove("open");
+      drawer.setAttribute("aria-hidden", "true");
+    }
+
+    openTop.addEventListener("click", openDrawer);
+    openBottom.addEventListener("click", openDrawer);
+    closeBtn.addEventListener("click", closeDrawer);
+
+    // close when clicking overlay
+    drawer.addEventListener("click", (e) => {
+      if (e.target === drawer) closeDrawer();
+    });
+
+    // close on ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && drawer.classList.contains("open")) closeDrawer();
+    });
+  </script>
 </body>
 </html>
