@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My QuickQuote - Stop Losing Quotes to Phone Tag</title>
+  <title>Logic Nerds</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Let customers get instant pricing 24/7. More leads, less hassle, zero phone calls." />
+  <meta name="description" content="Logic Nerds builds revenue-focused tools for solopreneurs and small service businesses." />
 
   <style>
     :root{
@@ -16,8 +16,6 @@
       --soft: #f8fafc;
       --radius: 16px;
       --max: 1120px;
-      --green: #10b981;
-      --red: #ef4444;
     }
 
     * { box-sizing: border-box; }
@@ -38,6 +36,7 @@
       padding: 22px 24px;
     }
 
+    /* Global header colors */
     h1,h2,h3,h4,h5,h6{ color: var(--blue); margin: 0; }
 
     /* Header */
@@ -54,7 +53,7 @@
     }
 
     .logo{
-      height: 52px;
+      height: 52px; /* ~1.3x prior */
       width: auto;
       display: block;
     }
@@ -74,312 +73,148 @@
       border-radius: 999px;
     }
 
+    .navlinks a:focus{
+      outline: 2px solid rgba(11,143,243,.25);
+      outline-offset: 2px;
+    }
+
     /* Hero */
+    main .wrap{ padding-top: 18px; } /* reduce gap under header */
+
     .hero{
-      padding: 40px 0;
-      text-align: center;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 34px;
+      align-items: center;
+      padding: 26px 0 26px; /* tighter than before */
+    }
+
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
     }
 
     .hero h1{
-      font-size: 52px;
-      line-height: 1.1;
+      font-size: 46px;
+      line-height: 1.08;
       letter-spacing: -0.02em;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
-    .hero .subhead{
-      font-size: 22px;
+    .hero p{
+      margin: 0;
+      font-size: 18px;
       color: var(--muted);
-      margin: 0 auto 28px;
-      max-width: 60ch;
+      max-width: 62ch;
     }
 
-    .hero-cta{
+    .photo-placeholder{
+      height: 280px;
+      border-radius: var(--radius);
+      border: 1px dashed #cbd5e1;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          #f8fafc,
+          #f8fafc 10px,
+          #ffffff 10px,
+          #ffffff 20px
+        );
       display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 768px){
-      .hero h1{ font-size: 38px; }
-      .hero .subhead{ font-size: 18px; }
-    }
-
-    /* Buttons */
-    .btn{
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 13px 22px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 15px;
-      cursor: pointer;
-      text-decoration: none;
-      border: 2px solid var(--blue);
+      color: #64748b;
+      font-size: 14px;
+      text-align: center;
+      padding: 22px;
     }
-
-    .btn-primary{
-      background: var(--blue);
-      color: #ffffff;
-    }
-    .btn-primary:hover{ filter: brightness(1.05); text-decoration: none; }
-
-    .btn-secondary{
-      background: transparent;
-      color: var(--blue);
-    }
-    .btn-secondary:hover{ background: var(--soft); text-decoration: none; }
 
     /* Sections */
     section{
-      padding: 50px 0;
+      padding: 34px 0;
     }
 
     .section-title{
-      font-size: 36px;
-      margin-bottom: 12px;
+      font-size: 28px;
+      margin-bottom: 10px;
       letter-spacing: -0.01em;
-      text-align: center;
     }
 
     .section-sub{
-      margin: 0 auto 36px;
+      margin: 0 0 22px;
       color: var(--muted);
-      max-width: 70ch;
-      font-size: 18px;
-      text-align: center;
+      max-width: 78ch;
+      font-size: 16px;
     }
 
-    /* Problem/Solution Grid */
-    .grid-3{
+    /* Product */
+    .product{
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: .9fr 1.1fr;
       gap: 28px;
-      margin-top: 36px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px){
+      .product{ grid-template-columns: 1fr; }
     }
 
     .card{
       border: 1px solid var(--border);
       border-radius: var(--radius);
       background: #ffffff;
-      padding: 24px;
       box-shadow: 0 10px 30px rgba(15, 23, 42, .06);
     }
 
-    .card h3{
-      font-size: 20px;
-      margin-bottom: 10px;
+    .product-card{
+      padding: 26px;
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-
-    .card p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .icon{
-      font-size: 24px;
-    }
-
-    /* How It Works */
-    .steps{
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
-      margin-top: 36px;
-    }
-
-    .step{
-      text-align: center;
-    }
-
-    .step-num{
-      display: inline-flex;
-      align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--blue);
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 20px;
-      margin-bottom: 14px;
-    }
-
-    .step h3{
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .step p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* Demo Section */
-    .demo-box{
+      min-height: 220px;
       background: var(--soft);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 40px;
-      text-align: center;
-      margin-top: 36px;
     }
 
-    .demo-box p{
-      margin: 0 0 22px;
+    .qq-logo{
+      max-width: 220px;
+      width: 70%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .product h3{
+      font-size: 22px;
+      margin: 0 0 10px;
+    }
+
+    .product p{
+      margin: 0 0 14px;
       color: var(--muted);
       font-size: 16px;
     }
 
-    /* Who This Is For */
-    .for-grid{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      margin-top: 36px;
-    }
-
-    @media (max-width: 768px){
-      .for-grid{ grid-template-columns: 1fr; }
-    }
-
-    .for-card{
-      border: 2px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-
-    .for-card h3{
-      font-size: 22px;
-      margin-bottom: 14px;
-    }
-
-    .for-card ul{
-      margin: 0;
-      padding-left: 20px;
-      color: var(--muted);
-    }
-
-    .for-card li{
-      margin-bottom: 8px;
-    }
-
-    /* Pricing */
-    .pricing-card{
-      max-width: 480px;
-      margin: 36px auto 0;
-      border: 2px solid var(--blue);
-      border-radius: var(--radius);
-      padding: 32px;
-      text-align: center;
-    }
-
-    .price{
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--blue);
-      margin: 14px 0;
-    }
-
-    .price-sub{
+    .product ul{
+      margin: 0 0 18px;
+      padding-left: 18px;
       color: var(--muted);
       font-size: 14px;
-      margin-bottom: 22px;
     }
 
-    .features-list{
-      list-style: none;
-      padding: 0;
-      margin: 22px 0;
-      text-align: left;
-    }
-
-    .features-list li{
-      padding: 8px 0;
-      color: var(--muted);
-      display: flex;
+    .btn{
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-    }
-
-    .features-list li::before{
-      content: "✓";
-      color: var(--green);
+      justify-content: center;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--blue);
+      background: var(--blue);
+      color: #ffffff;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
     }
-
-    .addon-box{
-      margin-top: 24px;
-      padding: 20px;
-      background: var(--soft);
-      border-radius: 12px;
-    }
-
-    .addon-box strong{
-      color: var(--blue);
-    }
-
-    /* FAQ */
-    .faq{
-      max-width: 800px;
-      margin: 36px auto 0;
-    }
-
-    .faq-item{
-      margin-bottom: 24px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .faq-item:last-child{
-      border-bottom: none;
-    }
-
-    .faq-item h4{
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .faq-item p{
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* Final CTA */
-    .final-cta{
-      text-align: center;
-      padding: 60px 0;
-      background: var(--soft);
-    }
-
-    .final-cta h2{
-      font-size: 40px;
-      margin-bottom: 14px;
-    }
-
-    .final-cta p{
-      color: var(--muted);
-      font-size: 18px;
-      margin: 0 0 28px;
-    }
-
-    .final-cta .fine-print{
-      margin-top: 18px;
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .btn:hover{ filter: brightness(1.03); text-decoration: none; }
 
     /* Footer */
     footer{
@@ -387,8 +222,80 @@
       padding: 22px 0;
       font-size: 13px;
       color: var(--muted);
-      text-align: center;
+      background: #ffffff;
     }
+
+    .footer-row{
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* Legal drawer */
+    .drawer{
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, .35);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 18px;
+      z-index: 50;
+    }
+    .drawer.open{ display: flex; }
+
+    .drawer-panel{
+      width: min(920px, 100%);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 30px 80px rgba(15,23,42,.25);
+      overflow: hidden;
+    }
+
+    .drawer-head{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--soft);
+    }
+
+    .drawer-head h4{
+      margin: 0;
+      font-size: 16px;
+      color: var(--blue);
+    }
+
+    .drawer-close{
+      border: 1px solid var(--border);
+      background: #ffffff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .drawer-body{
+      padding: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .drawer-body strong{ color: var(--text); }
+    /* Hero image */
+.hero-image {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
   </style>
 </head>
 
@@ -400,337 +307,180 @@
       </a>
 
       <nav class="navlinks" aria-label="Primary navigation">
-        <a href="/">Home</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+        <a href="#" id="legalLinkTop">Legal</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="wrap">
-        <h1>Stop Losing Quotes to Phone Tag</h1>
-        <p class="subhead">
-          Let customers get instant pricing 24/7. More leads, less hassle, zero phone calls.
-        </p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#">Start Free Trial</a>
-          <a class="btn btn-secondary" href="https://calendar.app.google/J7PzthR2gvhFjm9Z6">Book a Quick Demo</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Problem Section -->
-    <section style="background: var(--soft);">
-      <div class="wrap">
-        <h2 class="section-title">You're Losing Money Every Day</h2>
-        
-        <div class="grid-3">
-          <div class="card">
-            <h3><span class="icon">📞</span> Customers don't want to call</h3>
-            <p>
-              Most people browse at night. When they can't get instant pricing, they move on to your competitor.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3><span class="icon">⏰</span> You're spending hours on quotes</h3>
-            <p>
-              How much time do you waste explaining "small vs medium home" or "what's included in move-out cleaning?"
-            </p>
-          </div>
-
-          <div class="card">
-            <h3><span class="icon">❌</span> Leads go cold</h3>
-            <p>
-              They fill out a contact form... then forget about you by the time you call back tomorrow.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ROI Calculator -->
-    <section>
-      <div class="wrap">
-        <h2 class="section-title">What's One Extra Job Worth?</h2>
-        <p class="section-sub">
-          See how fast My QuickQuote pays for itself
-        </p>
-
-        <div style="max-width: 500px; margin: 0 auto; background: var(--soft); border: 2px solid var(--border); border-radius: var(--radius); padding: 32px;">
-          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">
-            Your average job amount:
-          </label>
-          <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 20px;">
-            <span style="font-size: 24px; color: var(--muted);">$</span>
-            <input 
-              type="number" 
-              id="jobAmount" 
-              placeholder="500" 
-              min="0"
-              style="flex: 1; padding: 12px 16px; font-size: 18px; border: 1px solid var(--border); border-radius: 8px; background: white;"
-            />
-          </div>
-          
-          <div id="roiResult" style="padding: 20px; background: white; border-radius: 8px; text-align: center; display: none;">
-            <p style="margin: 0 0 8px; color: var(--muted); font-size: 14px;">One additional job will pay for My QuickQuote for</p>
-            <p style="margin: 0; font-size: 36px; font-weight: 700; color: var(--blue);" id="monthsResult">--</p>
-            <p style="margin: 8px 0 0; color: var(--muted); font-size: 14px;">months!</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Solution Section -->
-    <section>
-      <div class="wrap">
-        <h2 class="section-title">Your 24/7 Quote Machine</h2>
-        
-        <div class="grid-3">
-          <div class="card">
-            <h3>✅ Instant Pricing</h3>
-            <p>
-              Customers select their services, see the price update in real-time, and request a quote - all in 60 seconds.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>✅ You Get Qualified Leads</h3>
-            <p>
-              Every quote request includes exactly what they want and how much it costs. No more guessing.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>✅ Professional Edge</h3>
-            <p>
-              Look way more legit than competitors who still say "call for pricing."
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>✅ Works While You Sleep</h3>
-            <p>
-              Capture leads at 11pm on Sunday. Wake up to quote requests ready to convert.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>✅ Built-in Mini-CRM</h3>
-            <p>
-              Every quote is automatically saved and organized. No more lost emails or forgotten follow-ups.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How It Works -->
-    <section style="background: var(--soft);">
-      <div class="wrap">
-        <h2 class="section-title">How It Works</h2>
-        
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <h3>Build Your Calculator</h3>
-            <p>
-              Add your services and prices. Customize your colors and branding. Takes 5 minutes.
-            </p>
-          </div>
-
-          <div class="step">
-            <div class="step-num">2</div>
-            <h3>Share Your Link</h3>
-            <p>
-              Put it on your website, social media, Google Business - anywhere customers find you.
-            </p>
-          </div>
-
-          <div class="step">
-            <div class="step-num">3</div>
-            <h3>Get Quote Requests</h3>
-            <p>
-              Customers request quotes 24/7. You get an email with their info and what they want. Call them back and close the deal.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section>
-      <div class="wrap">
-        <h2 class="section-title">See It In Action</h2>
-        
-        <div class="demo-box">
-          <div style="max-width: 800px; margin: 0 auto;">
-            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-              <iframe 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 12px;"
-                src="https://www.youtube.com/embed/HMsefG2khsg" 
-                title="My QuickQuote Demo" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-              </iframe>
-            </div>
-          </div>
-          <p style="margin-top: 28px; margin-bottom: 0;">
-            <a class="btn btn-primary" href="#">Want this for your business?</a>
+    <div class="wrap">
+      <section class="hero">
+        <div>
+          <h1>Built for solopreneurs and small service businesses.</h1>
+          <p>
+            We build focused tools designed to increase revenue and make
+            managing operations easier — without enterprise-level pricing and complexity.
           </p>
         </div>
-      </div>
-    </section>
 
-    <!-- Who This Is For -->
-    <section style="background: var(--soft);">
-      <div class="wrap">
-        <h2 class="section-title">Who This Is For</h2>
-        
-        <div style="max-width: 600px; margin: 0 auto;">
-          <div class="for-card">
-            <h3 style="color: var(--green);">Perfect for:</h3>
+        <img
+  src="LogicNerdSiteAssets/Logic-nerds-dog-man-working.jpg"
+  alt="Solopreneur working with pet"
+  class="hero-image"
+/>
+      </section>
+
+      <section id="products">
+        <h2 class="section-title">Solo Operators</h2>
+        <p class="section-sub">
+          You need simplicity and cost efficiency. We nerd out on those! Check out our tools:
+        </p>
+
+        <div class="product">
+          <div class="card product-card">
+            <img class="qq-logo" src="LogicNerdSiteAssets/Quick_Quote_Logo.png" alt="My QuickQuote logo" />
+          </div>
+
+          <div>
+            <h3>My QuickQuote</h3>
+            <p>
+              A fast, customer-friendly quoting tool built for solo operators who need to respond quickly,
+              look professional, and close more work.
+            </p>
             <ul>
-              <li>House Cleaning Services</li>
-              <li>Lawn Care & Landscaping</li>
-              <li>Moving Companies</li>
-              <li>Handyman Services</li>
-              <li>Pet Services</li>
-              <li>Any service business with clear pricing tiers</li>
+              <li>Create consistent quotes in minutes</li>
+              <li>Send quotes instantly to customers</li>
+              <li>Reduce friction and lost opportunities</li>
             </ul>
+            <a class="btn" href="my-quick-quote.html">Learn more</a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Pricing -->
-    <section id="pricing">
-      <div class="wrap">
-        <h2 class="section-title">Simple, Transparent Pricing</h2>
-        
-        <div class="pricing-card">
-          <div class="price">$29<span style="font-size: 20px; font-weight: 400;">/month</span></div>
-          <div class="price-sub">(or $290/year - save $58!)</div>
-          
-          <ul class="features-list">
-            <li>Unlimited quotes</li>
-            <li>Unlimited services</li>
-            <li>Mini-CRM to store and organize all quotes</li>
-            <li>Up to 3 team members</li>
-            <li>Custom branding</li>
-            <li>Email notifications</li>
-            <li>Cancel anytime</li>
-          </ul>
+      <section>
+        <h2 class="section-title">Individuals</h2>
+        <p class="section-sub">
+          Tools built for everyday life — simple, accessible, and designed to help you stay on top of things.
+        </p>
 
-          <a class="btn btn-primary" href="#" style="width: 100%;">Start 14-Day Free Trial</a>
-          <p style="margin-top: 12px; font-size: 13px; color: var(--muted);">No credit card required</p>
+        <div class="product">
+          <div class="card product-card">
+            <img class="qq-logo" src="LogicNerdSiteAssets/IDK-Logo.png" alt="IDK logo" />
+          </div>
 
-          <div class="addon-box">
-            <p style="margin: 0; text-align: left;">
-              <strong>🚀 Concierge Setup - $99</strong><br/>
-              Don't want to set it up yourself? We'll build your calculator in 24 hours. Up to 10 services included.
+          <div>
+            <h3>IDK</h3>
+            <p>
+              A straightforward money tracker that helps you understand where your money actually goes —
+              no complicated budgeting systems or financial jargon.
             </p>
+            <ul>
+              <li>Track spending and groceries easily</li>
+              <li>See where your money is going</li>
+              <li>Stay on top of your budget without complexity</li>
+            </ul>
+            <a class="btn" href="https://www.myidk.app">Learn more</a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- FAQ -->
-    <section id="faq" style="background: var(--soft);">
-      <div class="wrap">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        
-        <div class="faq">
-          <div class="faq-item">
-            <h4>Do I have to show my exact prices?</h4>
-            <p>
-              Prices are estimates. You can add a disclaimer that final pricing depends on the actual job. But giving a ballpark gets customers interested instead of losing them.
-            </p>
-          </div>
-
-          <div class="faq-item">
-            <h4>What if my pricing changes?</h4>
-            <p>
-              Update it anytime in 30 seconds. Log in, change the number, save. Done.
-            </p>
-          </div>
-
-          <div class="faq-item">
-            <h4>Can I use this if I'm not tech-savvy?</h4>
-            <p>
-              Absolutely. If you can use Facebook, you can use this. Plus we offer $99 concierge setup if you want us to do it for you.
-            </p>
-          </div>
-
-          <div class="faq-item">
-            <h4>What happens after someone requests a quote?</h4>
-            <p>
-              You get an email immediately with their name, contact info, what services they want, and the estimated price. Plus, the quote is automatically saved in your dashboard so you can track and follow up on every lead. Then you call them back and close the deal like normal.
-            </p>
-          </div>
-
-          <div class="faq-item">
-            <h4>Can my team use it too?</h4>
-            <p>
-              Yes! You can invite up to 2 additional team members. All quote requests go to everyone.
-            </p>
-          </div>
-
-          <div class="faq-item">
-            <h4>What if they don't like the price?</h4>
-            <p>
-              Then they weren't going to hire you anyway. Better to know now than waste time on a call. Plus, most people are fine with it - they're asking for the quote because they WANT the service.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Final CTA -->
-  <section class="final-cta">
-    <div class="wrap">
-      <h2>Get Your First Quote Request This Week</h2>
-      <p>Most customers see their first quote request within 48 hours of launching.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="#">Start Free Trial - No Credit Card Required</a>
-        <a class="btn btn-secondary" href="https://calendar.app.google/J7PzthR2gvhFjm9Z6">Book a 15-Min Demo Call</a>
-      </div>
-      <p class="fine-print">14-day free trial. $29/month after. Cancel anytime. No contracts.</p>
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-sub">
+          Questions, partnerships, or product feedback — email us and we'll respond.
+        </p>
+        <a class="btn" href="mailto:elijah@logicnerds.net">Email Elijah</a>
+      </section>
     </div>
-  </section>
+  </main>
 
   <footer>
     <div class="wrap">
-      <p>
-        © <span id="year"></span> Logic Nerds ·
-        <a href="mailto:elijah@logicnerds.net">elijah@logicnerds.net</a> ·
-        <a href="/">Back to Logic Nerds</a>
-      </p>
+      <div class="footer-row">
+        <div>
+          © <span id="year"></span> Logic Nerds ·
+          <a href="mailto:elijah@logicnerds.net">elijah@logicnerds.net</a>
+        </div>
+        <div>
+          <a href="#" id="legalLinkBottom" style="color:#0b8ff3; font-weight:700;">Legal stuff</a>
+        </div>
+      </div>
     </div>
   </footer>
+
+  <!-- Legal Drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <h4 id="drawerTitle">Legal Stuff</h4>
+        <button class="drawer-close" id="drawerClose" aria-label="Close legal drawer">Close</button>
+      </div>
+      <div class="drawer-body">
+        <p><strong>Legal Notice</strong></p>
+        <p>
+          Logic Nerds provides web-based software tools intended to help solopreneurs and small service businesses
+          improve operational efficiency and revenue workflows. All products and services are provided "as is"
+          and "as available," without warranties of any kind, whether express, implied, or statutory, including
+          (without limitation) implied warranties of merchantability, fitness for a particular purpose, and
+          non-infringement.
+        </p>
+        <p>
+          <strong>No guarantees.</strong> We do not guarantee specific outcomes, revenue increases, performance results,
+          or uninterrupted availability. Your results depend on many factors outside our control.
+        </p>
+        <p>
+          <strong>No professional advice.</strong> Logic Nerds does not provide legal, financial, tax, or accounting advice.
+          You are responsible for ensuring your use of our tools complies with applicable laws, regulations, and industry
+          requirements.
+        </p>
+        <p>
+          <strong>Limitation of liability.</strong> To the maximum extent permitted by law, Logic Nerds will not be liable for
+          any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, revenue, data,
+          or goodwill arising from or related to your use of (or inability to use) our products.
+        </p>
+        <p>
+          <strong>Privacy.</strong> We do not sell personal data. Any information collected is used to operate, maintain,
+          and improve our products. For detailed terms and privacy policies, we will publish dedicated pages as the
+          products mature.
+        </p>
+      </div>
+    </div>
+  </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ROI Calculator
-    const jobAmountInput = document.getElementById('jobAmount');
-    const roiResult = document.getElementById('roiResult');
-    const monthsResult = document.getElementById('monthsResult');
+    const drawer = document.getElementById("drawer");
+    const closeBtn = document.getElementById("drawerClose");
+    const openTop = document.getElementById("legalLinkTop");
+    const openBottom = document.getElementById("legalLinkBottom");
 
-    jobAmountInput.addEventListener('input', function() {
-      const amount = parseFloat(this.value);
-      
-      if (amount > 0) {
-        const months = Math.floor(amount / 29);
-        monthsResult.textContent = months;
-        roiResult.style.display = 'block';
-      } else {
-        roiResult.style.display = 'none';
-      }
+    function openDrawer(e){
+      if (e) e.preventDefault();
+      drawer.classList.add("open");
+      drawer.setAttribute("aria-hidden", "false");
+    }
+
+    function closeDrawer(e){
+      if (e) e.preventDefault();
+      drawer.classList.remove("open");
+      drawer.setAttribute("aria-hidden", "true");
+    }
+
+    openTop.addEventListener("click", openDrawer);
+    openBottom.addEventListener("click", openDrawer);
+    closeBtn.addEventListener("click", closeDrawer);
+
+    // close when clicking overlay
+    drawer.addEventListener("click", (e) => {
+      if (e.target === drawer) closeDrawer();
+    });
+
+    // close on ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && drawer.classList.contains("open")) closeDrawer();
     });
   </script>
 </body>
