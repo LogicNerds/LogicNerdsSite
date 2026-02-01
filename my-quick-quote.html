@@ -417,7 +417,7 @@
         </p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#">Start Free Trial</a>
-          <a class="btn btn-secondary" href="#">See Demo</a>
+          <a class="btn btn-secondary" href="https://calendar.app.google/J7PzthR2gvhFjm9Z6">Book a Quick Demo</a>
         </div>
       </div>
     </section>
@@ -447,6 +447,38 @@
             <p>
               They fill out a contact form... then forget about you by the time you call back tomorrow.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">What's One Extra Job Worth?</h2>
+        <p class="section-sub">
+          See how fast My QuickQuote pays for itself
+        </p>
+
+        <div style="max-width: 500px; margin: 0 auto; background: var(--soft); border: 2px solid var(--border); border-radius: var(--radius); padding: 32px;">
+          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">
+            Your average job amount:
+          </label>
+          <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 20px;">
+            <span style="font-size: 24px; color: var(--muted);">$</span>
+            <input 
+              type="number" 
+              id="jobAmount" 
+              placeholder="500" 
+              min="0"
+              style="flex: 1; padding: 12px 16px; font-size: 18px; border: 1px solid var(--border); border-radius: 8px; background: white;"
+            />
+          </div>
+          
+          <div id="roiResult" style="padding: 20px; background: white; border-radius: 8px; text-align: center; display: none;">
+            <p style="margin: 0 0 8px; color: var(--muted); font-size: 14px;">One additional job will pay for My QuickQuote for</p>
+            <p style="margin: 0; font-size: 36px; font-weight: 700; color: var(--blue);" id="monthsResult">--</p>
+            <p style="margin: 8px 0 0; color: var(--muted); font-size: 14px;">months at $29/month</p>
           </div>
         </div>
       </div>
@@ -483,6 +515,13 @@
             <h3>✅ Works While You Sleep</h3>
             <p>
               Capture leads at 11pm on Sunday. Wake up to quote requests ready to convert.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>✅ Built-in Mini-CRM</h3>
+            <p>
+              Every quote is automatically saved and organized. No more lost emails or forgotten follow-ups.
             </p>
           </div>
         </div>
@@ -551,7 +590,7 @@
       <div class="wrap">
         <h2 class="section-title">Who This Is For</h2>
         
-        <div class="for-grid">
+        <div style="max-width: 600px; margin: 0 auto;">
           <div class="for-card">
             <h3 style="color: var(--green);">Perfect for:</h3>
             <ul>
@@ -561,15 +600,6 @@
               <li>Handyman Services</li>
               <li>Pet Services</li>
               <li>Any service business with clear pricing tiers</li>
-            </ul>
-          </div>
-
-          <div class="for-card">
-            <h3 style="color: var(--red);">Not for you if:</h3>
-            <ul>
-              <li>Every job is completely custom (construction, remodeling)</li>
-              <li>You prefer doing every quote by phone</li>
-              <li>You have 1-2 services max</li>
             </ul>
           </div>
         </div>
@@ -588,6 +618,7 @@
           <ul class="features-list">
             <li>Unlimited quotes</li>
             <li>Unlimited services</li>
+            <li>Mini-CRM to store and organize all quotes</li>
             <li>Up to 3 team members</li>
             <li>Custom branding</li>
             <li>Email notifications</li>
@@ -598,10 +629,34 @@
           <p style="margin-top: 12px; font-size: 13px; color: var(--muted);">No credit card required</p>
 
           <div class="addon-box">
-            <p style="margin: 0; text-align: left;">
-              <strong>🚀 Concierge Setup - $99</strong><br/>
-              Don't want to set it up yourself? We'll build your calculator in 24 hours. Up to 10 services included.
-            </p>
+            <h3 style="color: var(--blue); margin: 0 0 18px; text-align: center; font-size: 20px;">Additional Help</h3>
+            
+            <div style="text-align: left; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border);">
+              <p style="margin: 0;">
+                <strong>💡 Pricing Standardization Consultation - $49</strong><br/>
+                <span style="font-size: 14px; color: var(--muted);">
+                  A 30-minute call where we discuss your current pricing structure and how to conform it to work with My QuickQuote. We'll review your products/services on the call, then Logic Nerds follows up with a recommended structure.
+                </span>
+              </p>
+            </div>
+
+            <div style="text-align: left; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border);">
+              <p style="margin: 0;">
+                <strong>🚀 Concierge Setup - $99</strong><br/>
+                <span style="font-size: 14px; color: var(--muted);">
+                  Don't want to set it up yourself? We'll build your calculator in 24 hours. Up to 10 services included.
+                </span>
+              </p>
+            </div>
+
+            <div style="text-align: left;">
+              <p style="margin: 0;">
+                <strong>🎨 Full Custom Brand Build - Custom Pricing</strong><br/>
+                <span style="font-size: 14px; color: var(--muted);">
+                  We'll build a version of the tool that closely matches your branding and website. Perfect for businesses that want a fully integrated look and feel.
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -637,7 +692,7 @@
           <div class="faq-item">
             <h4>What happens after someone requests a quote?</h4>
             <p>
-              You get an email immediately with their name, contact info, what services they want, and the estimated price. Then you call them back and close the deal like normal.
+              You get an email immediately with their name, contact info, what services they want, and the estimated price. Plus, the quote is automatically saved in your dashboard so you can track and follow up on every lead. Then you call them back and close the deal like normal.
             </p>
           </div>
 
@@ -666,7 +721,7 @@
       <p>Most customers see their first quote request within 48 hours of launching.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#">Start Free Trial - No Credit Card Required</a>
-        <a class="btn btn-secondary" href="#">Book a 5-Min Demo Call</a>
+        <a class="btn btn-secondary" href="https://calendar.app.google/J7PzthR2gvhFjm9Z6">Book a 15-Min Demo Call</a>
       </div>
       <p class="fine-print">14-day free trial. $29/month after. Cancel anytime. No contracts.</p>
     </div>
@@ -684,6 +739,23 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ROI Calculator
+    const jobAmountInput = document.getElementById('jobAmount');
+    const roiResult = document.getElementById('roiResult');
+    const monthsResult = document.getElementById('monthsResult');
+
+    jobAmountInput.addEventListener('input', function() {
+      const amount = parseFloat(this.value);
+      
+      if (amount > 0) {
+        const months = Math.floor(amount / 29);
+        monthsResult.textContent = months;
+        roiResult.style.display = 'block';
+      } else {
+        roiResult.style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
